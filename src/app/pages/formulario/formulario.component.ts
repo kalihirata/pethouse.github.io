@@ -1,13 +1,8 @@
 import {
   Component,
-  ElementRef,
   OnInit,
-  ViewChild,
 } from '@angular/core';
 import {
-  AbstractControl,
-  FormArray,
-  FormControl,
   FormGroup,
 } from '@angular/forms';
 
@@ -20,7 +15,6 @@ import { menuNames } from 'src/app/shared/models/menu-model';
   styleUrls: ['./formulario.component.scss'],
 })
 export class FormularioComponent implements OnInit {
-  @ViewChild('inputDate') inputDateRef!: ElementRef;
 
   menuNames = menuNames;
   petForm!: FormGroup;
@@ -64,9 +58,7 @@ export class FormularioComponent implements OnInit {
   async handleCep(): Promise<void> {
     const cep = this.petForm.controls['address'].value.zipcode;
     const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
-
     const data = await response.json();
-
     const { logradouro, localidade, uf } = data;
 
     this.petForm.get(['address', 'address'])!.setValue(logradouro);
