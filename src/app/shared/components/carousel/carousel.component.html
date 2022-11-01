@@ -1,0 +1,7 @@
+<swiper *ngIf="imagesContents.length" [navigation]="true" class="mySwiper">
+  <ng-template swiperSlide *ngFor="let imageContent of imagesContents">
+    <img
+      src="{{imageContent.src}}"
+      alt="{{imageContent.description}}"
+  /></ng-template>
+</swiper>

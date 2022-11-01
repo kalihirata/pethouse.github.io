@@ -1,0 +1,39 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: #a29f9e;
+  }
+  
+  .list {
+    display: flex;
+    gap: 140px;
+    flex-direction: column;
+  }
+  
+  @media only screen and (min-width: 600px) {
+    .list {
+      flex-direction: row;
+    }
+  }
+  
+  .carousel {
+    margin-bottom: 20px;
+  }
+  
+  .images {
+    margin: 0 auto;
+    font-size: 28px;
+    text-decoration: none !important;
+    width: 220px;
+    border: none;
+    align-self: center;
+  }
+  
+  
+  
+  .fw-light {
+    font-family: "leckerli-one-regular";
+    color: #E6863A;
+    font-size: 100px;
+  }
+  

@@ -1,0 +1,320 @@
+<div class="background"></div>
+<navbar-component [activePage]="menuNames.formulario"></navbar-component>
+<section class="py-5 text-center container">
+  <div class="row py-lg-5">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <h1 class="fw-light">Formulário</h1>
+    </div>
+  </div>
+</section>
+
+<form
+  [formGroup]="petForm"
+  (ngSubmit)="onSubmit()"
+  novalidate
+  class="container formulario"
+>
+  <div formGroupName="personalData">
+    <label for="formFile" class="form-label mt-4 form-section-name"
+      >Dados Pessoais</label
+    >
+    <div class="list-group">
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="inputNome"
+          placeholder="Exemplo: Maria Aparecida Souza"
+          formControlName="name"
+        />
+        <label for="inputNome">Nome Completo</label>
+        <div class="form-text">Nome completo sem abreviações</div>
+      </div>
+
+      <div class="form-floating mb-3 mt-3">
+        <input
+          type="email"
+          class="form-control"
+          id="inputEmail"
+          placeholder="nome@examplo.com.br"
+          aria-label="nome@examplo.com.br"
+          formControlName="email"
+        />
+        <label for="inputEmail">E-mail</label>
+        <div id="emailHelp" class="form-text">
+          Nós nunca divulgaremos seu e-mail
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-2">
+      <div class="form-floating col-sm-7">
+        <input
+          type="text"
+          class="form-control"
+          id="inputApelido"
+          placeholder="Nickname"
+          aria-label="Nickname"
+          formControlName="nickName"
+        />
+        <label for="inputApelido">Apelido</label>
+        <div class="form-text">Escreva como gostaria de ser chamado</div>
+      </div>
+      <div class="form-floating col-sm">
+        <input
+          #inputDate
+          type="date"
+          class="form-control"
+          id="inputDate"
+          aria-label="date"
+          data-date-format="DD MMMM YYYY"
+          formControlName="date"
+        />
+        <label for="inputDate">Data de Nascimento</label>
+      </div>
+    </div>
+
+    <div class="row g-2 mt-3">
+      <div class="form-floating col-sm-7">
+        <input
+          type="number"
+          class="form-control"
+          id="inputTelefone"
+          placeholder="Telefone"
+          aria-label="Telefone"
+          formControlName="phoneNumber"
+        />
+        <label for="inputTelefone">Telefone</label>
+        <div class="form-text">
+          Escreva o telefone/celular sem símbolos e com o DDD. Exemplo:
+          019123456789
+        </div>
+      </div>
+      <div class="form-floating col-sm">
+        <input
+          type="number"
+          class="form-control"
+          id="floatingInput"
+          placeholder="Celular"
+          aria-label="Celular"
+          formControlName="cellNumber"
+        />
+        <label for="floatingInput">Celular</label>
+      </div>
+    </div>
+
+    <div class="form-floating mb-3 mt-3">
+      <input
+        id="nickHelp"
+        type="number"
+        class="form-control"
+        placeholder="Exemplo: 12345678900"
+        aria-label="Number input with dropdown button"
+        formControlName="cpf"
+      />
+      <label for="inputNome">CPF</label>
+      <div class="form-text">
+        Escreva o número do documento sem símbolos, como pontos ou traços
+      </div>
+    </div>
+
+    <div class="form-floating mb-3 mt-3">
+      <input
+        type="text"
+        class="form-control"
+        id="inputRedesocial"
+        placeholder="nome@examplo.com.br"
+        aria-label="nome@examplo.com.br"
+        formControlName="socialLink"
+      />
+      <label for="inputRedesocial">Rede Social</label>
+      <div id="mediaHelp" class="form-text">
+        Inclua o link de uma das suas redes sociais (Instagram, Twiter,
+        Facebook, Linkedin, etc)
+      </div>
+    </div>
+  </div>
+  <div>
+    <label for="formFile" class="form-label mt-4 form-section-name"
+      >Endereço</label
+    >
+  </div>
+
+  <div formGroupName="address" class="row g-2">
+    <div class="form-floating col-sm-2">
+      <input
+        type="text"
+        class="form-control"
+        id="inputCep"
+        placeholder="Zip"
+        aria-label="Zip"
+        formControlName="zipcode"
+        (change)="handleCep()"
+      />
+      <label for="inputCep">CEP</label>
+    </div>
+
+    <div class="row g-2 mt-2">
+      <div class="form-floating col-sm-5">
+        <input
+          type="text"
+          class="form-control"
+          size="10"
+          id="inputAvenida"
+          formControlName="address"
+          placeholder="Address"
+          aria-label="Address"
+        />
+        <label for="inputAvenida">Avenida ou Rua</label>
+      </div>
+      <div class="form-floating col-sm-1">
+        <input
+          type="text"
+          class="form-control"
+          size="10"
+          id="inputNumero"
+          placeholder="Zip"
+          aria-label="Zip"
+        />
+        <label for="inputNumero">Número</label>
+      </div>
+    </div>
+
+    <div class="row g-2 mt-2">
+      <div class="form-floating col-sm-5">
+        <input
+          type="text"
+          class="form-control"
+          id="inputCidade"
+          formControlName="city"
+          placeholder="City"
+          aria-label="City"
+          id="inputCidade"
+        />
+        <label for="inputCidade">Cidade</label>
+      </div>
+      <div class="form-floating col-sm-1">
+        <input
+          type="text"
+          class="form-control"
+          id="inputEstado"
+          placeholder="State"
+          aria-label="State"
+          formControlName="state"
+          id="inputEstado"
+        />
+        <label for="inputEstado">Estado</label>
+      </div>
+    </div>
+  </div>
+
+  <div formGroupName="howToHelp">
+    <div class="mt-4">
+      <label for="formFile" class="form-label form-section-name"
+        >Como gostaria de ajudar?</label
+      >
+    </div>
+    <div class="form-check form-check-inline">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="helpOption"
+        formControlName="helpOption"
+        id="inlineRadio1"
+        value="option1"
+      />
+      <label class="form-check-label" for="inlineRadio1">Adotar</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="helpOption"
+        formControlName="helpOption"
+        id="inlineRadio2"
+        value="option2"
+      />
+      <label class="form-check-label" for="inlineRadio2">Lar Temporário</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="helpOption"
+        formControlName="helpOption"
+        id="inlineRadio3"
+        value="option3"
+      />
+      <label class="form-check-label" for="inlineRadio3"> Apadrinhar</label>
+    </div>
+
+    <div class="form-floating mb-3 mt-4">
+      <select
+        class="form-select"
+        id="floatingSelect"
+        formControlName="petName"
+        aria-label="Floating label select example"
+      >
+        <option selected>Escolha seu pet</option>
+        <option value="1">Thunder</option>
+        <option value="2">Salem</option>
+        <option value="3">Yuki</option>
+        <option value="4">Nina</option>
+        <option value="5">Chico</option>
+        <option value="6">Fred</option>
+        <option value="7">Milly</option>
+        <option value="8">Tango</option>
+        <option value="9">Doug</option>
+        <option value="10">Lucca</option>
+        <option value="11">Kika</option>
+        <option value="12">Molly</option>
+      </select>
+      <label for="floatingSelect">Nome do Pet</label>
+    </div>
+
+    <div class="form-floating mt-4">
+      <textarea
+        class="form-control"
+        placeholder="Leave a comment here"
+        id="floatingTextarea2"
+        style="height: 100px"
+        formControlName="reason"
+      ></textarea>
+      <label for="floatingTextarea2">Motivo</label>
+      <div class="form-text">
+        Nos conte brevemente o motivo pelo qual optou por adotar, apadrinhar ou
+        dar um lar temporário
+      </div>
+    </div>
+
+    <div class="form-floating mt-4">
+      <textarea
+        class="form-control"
+        placeholder="Leave a comment here"
+        id="inputComentarios"
+        style="height: 100px"
+        formControlName="comment"
+      ></textarea>
+      <label for="inputComentarios">Comentário</label>
+      <div class="form-text">Deixe seu comentário para nós</div>
+    </div>
+
+    <div class="form-check form-switch mt-4">
+      <input
+        class="form-check-input"
+        type="radio"
+        id="input1"
+        formControlName="reciveNews"
+        name="reciveNews"
+        checked
+      />
+      <label class="form-check-label" for="input1"
+        >Gostaria de receber notícias, informações sobre eventos ou artigos
+        sobre a nossa ONG?</label
+      >
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-danger mt-3">Submit</button>
+</form>
+<footer-component></footer-component>
