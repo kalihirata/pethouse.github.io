@@ -1,10 +1,5 @@
-import {
-  Component,
-  OnInit,
-} from '@angular/core';
-import {
-  FormGroup,
-} from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 import { FormBuilder } from '@angular/forms';
 import { menuNames } from 'src/app/shared/models/menu-model';
@@ -15,7 +10,6 @@ import { menuNames } from 'src/app/shared/models/menu-model';
   styleUrls: ['./formulario.component.scss'],
 })
 export class FormularioComponent implements OnInit {
-
   menuNames = menuNames;
   petForm!: FormGroup;
 
@@ -67,6 +61,19 @@ export class FormularioComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.petForm.value);
+    fetch('https://desenvolvimento-web-backend.vercel.app/api/formulario', {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      method: 'POST',
+      body: JSON.stringify(this.petForm.value),
+    })
+      .then(function (res) {
+        console.log(res);
+      })
+      .catch(function (res) {
+        console.log(res);
+      });
   }
 }

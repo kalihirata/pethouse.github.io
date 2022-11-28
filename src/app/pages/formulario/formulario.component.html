@@ -143,7 +143,7 @@
   <div formGroupName="address" class="row g-2">
     <div class="form-floating col-sm-2">
       <input
-        type="text"
+        type="number"
         class="form-control"
         id="inputCep"
         placeholder="Zip"
@@ -169,10 +169,11 @@
       </div>
       <div class="form-floating col-sm-1">
         <input
-          type="text"
+          type="number"
           class="form-control"
           size="10"
           id="inputNumero"
+          formControlName="number"
           placeholder="Zip"
           aria-label="Zip"
         />
